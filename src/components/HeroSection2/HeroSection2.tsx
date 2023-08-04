@@ -42,7 +42,7 @@ const HeroSection2 = ({
       <div className={styles.title__container}>
         {boxData?.map((data: BoxData, index: number) => {
           return (
-            <div className={styles.title__box}>
+            <div key={index + "boxData"} className={styles.title__box}>
               <h2 className={styles.counter}>{data.counter}</h2>
               <h2 className={styles.title}>{data.title}</h2>
             </div>

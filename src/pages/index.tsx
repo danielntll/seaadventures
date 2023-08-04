@@ -172,12 +172,10 @@ export async function getServerSideProps() {
     body: "getAllData",
   }).then(async (res) => {
     const alldata = await res.json();
-    console.log(alldata.dataSorted);
     data = alldata;
     allDeparturePorts = alldata.allDeparturePorts;
     sortedData = alldata.dataSorted;
     randomData = alldata.randomData;
-    console.log(randomData);
   });
   return {
     props: {
