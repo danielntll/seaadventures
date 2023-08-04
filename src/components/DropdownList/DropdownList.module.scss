@@ -1,0 +1,65 @@
+.DropdownList {
+  select {
+    width: 100%;
+
+    border: 1px solid $color-primary;
+    border-radius: 0;
+    padding: $padding-select;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 1px solid $color-tertiary;
+    }
+    &:focus-within {
+      border-color: $color-tertiary;
+    }
+    &:focus {
+      border-color: $color-tertiary;
+    }
+    &:hover {
+      border-color: $color-tertiary;
+    }
+    &::backdrop {
+      border-color: $color-tertiary;
+    }
+  }
+
+  .list {
+    text-transform: capitalize;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .DropdownList {
+    width: 100vw;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .DropdownList {
+    width: 100vw;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .DropdownList {
+    width: 30vw;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .DropdownList {
+    width: 20vw;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1450px) {
+  .DropdownList {
+    width: 20vw;
+  }
+}

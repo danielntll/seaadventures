@@ -1,3 +1,97 @@
-.title {
-  color: $color-primary;
+.main {
+  .section__content__header {
+    padding: $padding-homepage-section-phone;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $gap-drop;
+    padding-bottom: 0;
+  }
+  .section__content {
+    padding: $padding-homepage-section-phone;
+    display: grid;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .main {
+    .section__content__header {
+      padding: $padding-homepage-section-phone;
+      padding-bottom: 0;
+    }
+
+    .section__content {
+      padding: $padding-homepage-section-phone;
+      gap: 16px;
+      display: grid;
+      grid-template-columns: auto;
+    }
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .main {
+    .section__content__header {
+      padding: $padding-homepage-section-phone;
+      padding-bottom: 0;
+    }
+    .section__content {
+      padding: $padding-homepage-section-phone;
+      gap: 16px;
+      display: grid;
+      grid-template-columns: auto;
+    }
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .main {
+    .section__content__header {
+      padding: $padding-homepage-section-tablet;
+      padding-bottom: 0;
+    }
+    .section__content {
+      padding: $padding-homepage-section-tablet;
+      gap: 16px;
+      display: grid;
+      grid-template-columns: auto auto;
+    }
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .main {
+    .section__content__header {
+      padding: $padding-homepage-section-laptop;
+      padding-bottom: 0;
+    }
+    .section__content {
+      padding: $padding-homepage-section-laptop;
+      gap: 16px;
+      display: grid;
+      grid-template-columns: auto auto auto;
+    }
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1450px) {
+  .main {
+    .section__content__header {
+      padding: $padding-homepage-section-desktop;
+      padding-bottom: 0;
+    }
+    .section__content {
+      padding: $padding-homepage-section-desktop;
+      gap: 16px;
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+    }
+  }
 }

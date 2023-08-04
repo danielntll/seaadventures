@@ -1,5 +1,11 @@
 import Head from "next/head";
 import styles from "@/styles/pages/Home.module.scss";
+import Card from "@/components/Card";
+import { mock } from "@/utils/data";
+import { CardData } from "@/utils/types/typeCard";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import DropdownList from "@/components/DropdownList";
 
 export default function Home() {
   return (
@@ -11,7 +17,37 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main}`}>
-        <h1 className={styles.title}>Ciao mondo</h1>
+        <header>
+          <Navbar />
+        </header>
+        <section>
+          <HeroSection
+            title="Actual HERO CAARDDDD"
+            backgroundImageUrl="https://firebasestorage.googleapis.com/v0/b/meal-hub-3d81b.appspot.com/o/extra%2Fhero.jpeg?alt=media&token=09bef443-8c29-4fc0-acc2-2fe0652e8c59"
+          />
+        </section>
+
+        <section className={styles.section__container}>
+          <div className={styles.section__content__header}>
+            <DropdownList
+              values={["Palermo", "Catania", "Venezia"]}
+              name="Seleziona lettera"
+              callback={(value) => console.log("selezionato : ", value)}
+            />
+            <DropdownList
+              values={["Palermo", "Catania", "Venezia"]}
+              name="Seleziona lettera"
+              callback={(value) => console.log("selezionato : ", value)}
+            />
+          </div>
+          <div className={styles.section__content}>
+            {mock.map((card: CardData, index: number) => {
+              return (
+                <Card key={index + "HomePageCards" + card.id} data={card} />
+              );
+            })}
+          </div>
+        </section>
       </main>
     </>
   );

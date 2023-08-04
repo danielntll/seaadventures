@@ -1,0 +1,13 @@
+.Navbar {
+  padding: $padding-navbar;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: calc($height-navbar - ($padding-navbar * 2));
+  background-color: $color-white;
+  .logo {
+    width: calc($height-navbar - ($padding-navbar * 2));
+    height: calc($height-navbar - ($padding-navbar * 2));
+  }
+}

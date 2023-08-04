@@ -1,0 +1,85 @@
+.Card {
+  padding: $padding-card;
+  background-color: $color-light;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $gap-card;
+  border-radius: $border-radius-default;
+
+  .header {
+    .subtitle {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: $gap-font;
+    }
+    .title {
+    }
+  }
+  .section__1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .sx {
+      width: 55%;
+      .departure__title {
+        color: $color-tertiary;
+        text-transform: uppercase;
+      }
+      .departure__value {
+      }
+    }
+    .dx {
+      width: 35%;
+      .boatType {
+      }
+      .numberOfDays {
+      }
+    }
+  }
+  .section__2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .dx {
+      width: 35%;
+      .departureDate {
+      }
+      .departureHour {
+        color: $color-tertiary;
+      }
+    }
+    .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 10%;
+    }
+    .sx {
+      width: 35%;
+      .departureDate {
+      }
+      .departureHour {
+        color: $color-tertiary;
+      }
+    }
+  }
+  .section__3 {
+    display: flex;
+    flex-direction: column;
+    .reservations {
+    }
+    .reservationsAvailable__text {
+      color: $color-tertiary;
+      .reservationsAvailable__value {
+        font-weight: bold;
+        color: $color-primary;
+      }
+    }
+  }
+  .cta {
+  }
+}

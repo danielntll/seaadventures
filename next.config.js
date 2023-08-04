@@ -11,6 +11,7 @@ const nextConfig = {
       @import "./src/styles/variables/gaps.scss";
       @import "./src/styles/variables/paddings.scss";
       @import "./src/styles/variables/margins.scss";
+      @import "./src/styles/variables/heights.scss";
       @import "./src/styles/components/badge.scss";
       @import "./src/styles/components/button.scss";
       @import "./src/styles/components/container.scss";
