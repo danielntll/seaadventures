@@ -1,20 +1,33 @@
 import { CardData } from "@/utils/types/typeCard";
 import { typeDataSorted } from "@/utils/types/typeDataSorted";
+import { useEffect } from "react";
+import { useState } from "react";
 import Card from "../Card";
 import styles from "./ContentHomeFiltred.module.scss";
 
 type ComponentProps = {
   data: typeDataSorted[];
+  filter?: string;
 };
 
-const ContentHomeFiltred = ({ data }: ComponentProps) => {
+const ContentHomeFiltred = ({ data, filter }: ComponentProps) => {
   // VARIABLES ----------------------
   // CONDITIONS ---------------------
+  const [localData, setLocalData] = useState<typeDataSorted[]>(data);
   // FUNCTIONS ----------------------
+  useEffect(() => {
+    if (filter !== "") {
+      data.map((aux: typeDataSorted) => {
+        aux.departure === filter ? setLocalData([aux]) : null;
+      });
+    } else {
+      setLocalData(data);
+    }
+  }, [filter]);
   // VARIABLES ----------------------
   return (
     <div className={styles.sortedContainer}>
-      {data.map((data: typeDataSorted, index: number) => {
+      {localData.map((data: typeDataSorted, index: number) => {
         return (
           <div key={index + data.departure} className={styles.container}>
             <div className={styles.header}>

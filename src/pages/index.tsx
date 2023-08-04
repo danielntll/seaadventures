@@ -12,6 +12,7 @@ import { IoChevronDownCircleOutline } from "react-icons/io5";
 import ContentHome from "@/components/ContentHome";
 import ContentHomeFiltred from "@/components/ContentHomeFiltred";
 import { typeDataSorted } from "@/utils/types/typeDataSorted";
+import HeroSection2 from "@/components/HeroSection2";
 
 type PageProps = {
   data: {
@@ -24,19 +25,24 @@ type PageProps = {
 export default function Home(props: PageProps) {
   // VARIABLES ----------------------
   const stepData = 8;
-  console.log(props.sortedData);
   // CONDITIONS ---------------------
-  const [isFilterActive, setIsFilterActive] = useState(false);
+  const [isFilterActive, setIsFilterActive] = useState<boolean>(false);
   const [dataToShow, setDataToShow] = useState<CardData[]>([]);
+  const [specificFilter, setSpecificFilter] = useState<string>("");
   // FUNCTIONS ----------------------
   const handleFilter = (filterValue: string) => {
     if (filterValue !== "All") {
       setIsFilterActive(true);
+      setSpecificFilter("");
     } else {
       setIsFilterActive(false);
     }
   };
-  const handleSpecificFilter = (valueFilter: string) => {};
+  const handleSpecificFilter = (valueFilter: string) => {
+    valueFilter === "All"
+      ? setSpecificFilter("")
+      : setSpecificFilter(valueFilter);
+  };
 
   const handleAddMoreContent = () => {
     const auxArray: CardData[] = [...dataToShow];
@@ -77,11 +83,11 @@ export default function Home(props: PageProps) {
         </header>
         <section>
           <HeroSection
-            title="Actual HERO CAARDDDD"
+            title="Titolo dinamico"
             backgroundImageUrl="https://firebasestorage.googleapis.com/v0/b/meal-hub-3d81b.appspot.com/o/extra%2Fhero.jpeg?alt=media&token=09bef443-8c29-4fc0-acc2-2fe0652e8c59"
           />
         </section>
-
+        {/* ----- */}
         <section className={styles.section__container}>
           <div className={styles.section__content__header}>
             <DropdownList
@@ -93,13 +99,16 @@ export default function Home(props: PageProps) {
               <DropdownList
                 values={props.allDeparturePorts}
                 name="Tutti i porti"
-                callback={(value) => console.log("selezionato : ", value)}
+                callback={(value) => handleSpecificFilter(value)}
               />
             ) : null}
           </div>
           <div className={styles.section__content}>
             {isFilterActive ? (
-              <ContentHomeFiltred data={props.sortedData} />
+              <ContentHomeFiltred
+                filter={specificFilter}
+                data={props.sortedData}
+              />
             ) : (
               <ContentHome dataToShow={dataToShow} />
             )}
@@ -115,6 +124,29 @@ export default function Home(props: PageProps) {
               />
             ) : null}
           </div>
+        </section>
+        {/* ------- */}
+        <section>
+          <HeroSection2
+            boxData={[
+              {
+                counter: "+20",
+                title: "Dinamico",
+              },
+              {
+                counter: "+10",
+                title: "Dinamico",
+              },
+              {
+                counter: "+3",
+                title: "Dinamico",
+              },
+              {
+                counter: "+8",
+                title: "Dinamico",
+              },
+            ]}
+          />
         </section>
       </main>
     </>

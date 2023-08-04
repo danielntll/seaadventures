@@ -1,0 +1,84 @@
+.HeroSection2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .title__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: calc(100% - ($padding-hero * 2));
+    height: 100%;
+    padding: $padding-hero;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    .title__box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .title {
+        color: $color-white;
+      }
+      .counter {
+        color: $color-white;
+      }
+    }
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .HeroSection2 {
+    background-color: $color-primary;
+    height: 40vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .HeroSection2 {
+    background-color: $color-primary;
+    height: 40vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .HeroSection2 {
+    background-color: $color-primary;
+    height: 50vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .HeroSection2 {
+    background-color: $color-primary;
+    height: 70vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1450px) {
+  .HeroSection2 {
+    background-color: $color-primary;
+    height: 70vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
