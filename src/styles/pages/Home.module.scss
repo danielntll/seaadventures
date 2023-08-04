@@ -11,6 +11,9 @@
   }
   .section__content {
     padding: $padding-homepage-section-phone;
+    .section__content__title {
+      padding-bottom: $padding-hero;
+    }
   }
   .section__cta {
     display: flex;
@@ -18,6 +21,10 @@
     align-items: center;
     justify-content: center;
     padding: $padding-homepage-section-phone;
+  }
+  .footer {
+    height: 20vh;
+    background-color: $color-primary;
   }
 }
 

@@ -1,5 +1,5 @@
 import styles from "./Card.module.scss";
-import { textCard } from "./text";
+import { textCard } from "../../utils/data/text_Component_Card";
 
 import { useState, useEffect } from "react";
 import { IoArrowForwardOutline } from "react-icons/io5";

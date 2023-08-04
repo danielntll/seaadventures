@@ -7,6 +7,7 @@ type Data = {
   data: CardData[];
   allDeparturePorts: string[];
   dataSorted: typeDataSorted[];
+  randomData: CardData[];
 };
 
 export default function handler(
@@ -22,6 +23,16 @@ export default function handler(
     },
   ];
 
+  let randomNumber: number[] = [];
+  let randomData: CardData[] = [];
+  while (randomNumber.length < 8) {
+    let r = Math.floor(Math.random() * mock.length) + 1;
+    if (randomNumber.indexOf(r) === -1) {
+      randomNumber.push(r);
+      randomData.push(mock[r]);
+    }
+  }
+
   mock.forEach((data: CardData) => {
     if (allDeparturePorts.includes(data.departure.Port)) {
       dataSorted.map((aux: typeDataSorted, index: number) => {
@@ -36,7 +47,9 @@ export default function handler(
     }
   });
 
-  res.status(200).json({ data: mock, allDeparturePorts, dataSorted });
+  res
+    .status(200)
+    .json({ data: mock, allDeparturePorts, dataSorted, randomData });
 }
 
 export const mock = [

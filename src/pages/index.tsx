@@ -1,7 +1,5 @@
 import Head from "next/head";
 import styles from "@/styles/pages/Home.module.scss";
-import Card from "@/components/Card";
-import { mock } from "@/utils/data";
 import { CardData } from "@/utils/types/typeCard";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -13,6 +11,7 @@ import ContentHome from "@/components/ContentHome";
 import ContentHomeFiltred from "@/components/ContentHomeFiltred";
 import { typeDataSorted } from "@/utils/types/typeDataSorted";
 import HeroSection2 from "@/components/HeroSection2";
+import { textHomepage } from "@/utils/data/text_Page_Home";
 
 type PageProps = {
   data: {
@@ -20,6 +19,7 @@ type PageProps = {
   };
   allDeparturePorts: string[];
   sortedData: typeDataSorted[];
+  randomData: CardData[];
 };
 
 export default function Home(props: PageProps) {
@@ -148,6 +148,15 @@ export default function Home(props: PageProps) {
             ]}
           />
         </section>
+        {/* --------- */}
+        <div className={styles.section__content}>
+          <h2 className={styles.section__content__title}>
+            {textHomepage.section_randomData}
+          </h2>
+          <ContentHome dataToShow={props.randomData} />
+        </div>
+        {/* ------- */}
+        <footer className={styles.footer}></footer>
       </main>
     </>
   );
@@ -157,6 +166,7 @@ export async function getServerSideProps() {
   let data;
   let allDeparturePorts;
   let sortedData;
+  let randomData;
   await fetch("http://localhost:3001/api/allDepartues", {
     method: "POST",
     body: "getAllData",
@@ -166,12 +176,15 @@ export async function getServerSideProps() {
     data = alldata;
     allDeparturePorts = alldata.allDeparturePorts;
     sortedData = alldata.dataSorted;
+    randomData = alldata.randomData;
+    console.log(randomData);
   });
   return {
     props: {
       data,
       allDeparturePorts: allDeparturePorts,
       sortedData: sortedData,
+      randomData: randomData,
     },
   };
 }

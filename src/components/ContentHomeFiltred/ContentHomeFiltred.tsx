@@ -30,9 +30,11 @@ const ContentHomeFiltred = ({ data, filter }: ComponentProps) => {
       {localData.map((data: typeDataSorted, index: number) => {
         return (
           <div key={index + data.departure} className={styles.container}>
-            <div className={styles.header}>
-              <h2>{data.departure}</h2>
-            </div>
+            {filter ? null : (
+              <div className={styles.header}>
+                <h2>{data.departure}</h2>
+              </div>
+            )}
             <div className={styles.ContentHomeFiltred}>
               {data.data.map((card: CardData, index: number) => {
                 return (
