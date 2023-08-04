@@ -17,8 +17,8 @@ const Navbar = ({}: ComponentProps) => {
     <div className={styles.Navbar}>
       <img
         className={styles.logo}
-        src="https://firebasestorage.googleapis.com/v0/b/meal-hub-3d81b.appspot.com/o/extra%2Flogo.svg?alt=media&token=8b1ff380-8988-491a-9780-a4e27a0cb210"
-        alt=""
+        src="./assets/images/logo.svg"
+        alt="Header Logo SeaAdventures"
       />
     </div>
   );
