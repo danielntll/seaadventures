@@ -8,6 +8,10 @@ import HeroSection from "@/components/HeroSection";
 import DropdownList from "@/components/DropdownList";
 
 export default function Home() {
+  // VARIABLES ----------------------
+  // CONDITIONS ---------------------
+  // FUNCTIONS ----------------------
+  // VARIABLES ----------------------
   return (
     <>
       <Head>

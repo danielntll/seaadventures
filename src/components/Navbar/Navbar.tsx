@@ -2,6 +2,12 @@ import styles from "./Navbar.module.scss";
 
 type ComponentProps = {};
 
+/**
+ *
+ * @param
+ * @returns JSX.Component
+ */
+
 const Navbar = ({}: ComponentProps) => {
   // VARIABLES ----------------------
   // CONDITIONS ---------------------

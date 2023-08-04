@@ -6,6 +6,15 @@ type ComponentProps = {
   callback: (e: string) => void;
 };
 
+/**
+ *
+ * @param name - string - Name of the select input
+ * @param values - string [] - All elements of the list
+ * @param callback - (selectedValue: string) => void - A callback that needs a string param to get the selected value
+ *
+ * @returns JSX.Component
+ */
+
 const DropdownList = ({ name, values, callback }: ComponentProps) => {
   // VARIABLES ----------------------
   // CONDITIONS ---------------------

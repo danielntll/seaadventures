@@ -3,8 +3,15 @@ import styles from "./HeroSection.module.scss";
 type ComponentProps = {
   backgroundImageUrl?: string;
   title?: string;
-  opacity?: number;
 };
+
+/**
+ *
+ * @param backgroundImageUrl - string (optional) - Url of the background
+ * @param title - string (optional) - Hero title
+ *
+ * @returns JSX.Component
+ */
 
 const HeroSection = ({
   backgroundImageUrl = "https://firebasestorage.googleapis.com/v0/b/meal-hub-3d81b.appspot.com/o/extra%2Fhero.jpeg?alt=media&token=09bef443-8c29-4fc0-acc2-2fe0652e8c59",
