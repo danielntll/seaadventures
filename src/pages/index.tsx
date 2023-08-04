@@ -8,12 +8,46 @@ import HeroSection from "@/components/HeroSection";
 import DropdownList from "@/components/DropdownList";
 import { useState, useEffect } from "react";
 
-export default function Home() {
+type PageProps = {
+  data: {
+    data: CardData[];
+  };
+  departurePorts: string[];
+};
+
+export default function Home(props: PageProps) {
   // VARIABLES ----------------------
+  const stepData = 8;
   // CONDITIONS ---------------------
-  const [filters, setFilters] = useState();
-  const [valueFilter, setValueFilter] = useState();
+  const [isFilterActive, setIsFilterActive] = useState(false);
+  const [dataToShow, setDataToShow] = useState<CardData[]>([]);
   // FUNCTIONS ----------------------
+  const handleFilter = (filterValue: string) => {
+    if (filterValue !== "All") {
+      setIsFilterActive(true);
+    } else {
+      setIsFilterActive(false);
+    }
+  };
+  const handleSpecificFilter = (valueFilter: string) => {};
+
+  const handleAddMoreContent = () => {
+    const auxArray: CardData[] = [];
+    for (
+      let index = dataToShow.length;
+      index < stepData + dataToShow.length;
+      index++
+    ) {
+      auxArray.push(props.data.data[index]);
+    }
+    setDataToShow(auxArray);
+  };
+
+  useEffect(() => {
+    if (props) {
+      handleAddMoreContent();
+    }
+  }, [props]);
   // VARIABLES ----------------------
   return (
     <>
@@ -37,18 +71,20 @@ export default function Home() {
         <section className={styles.section__container}>
           <div className={styles.section__content__header}>
             <DropdownList
-              values={["Palermo", "Catania", "Venezia"]}
-              name="Seleziona lettera"
-              callback={(value) => console.log("selezionato : ", value)}
+              values={["Mostra porti di partenza"]}
+              name={"Tutti i risultati"}
+              callback={(value) => handleFilter(value)}
             />
-            <DropdownList
-              values={["Palermo", "Catania", "Venezia"]}
-              name="Seleziona lettera"
-              callback={(value) => console.log("selezionato : ", value)}
-            />
+            {isFilterActive ? (
+              <DropdownList
+                values={props.departurePorts}
+                name="Seleziona porto"
+                callback={(value) => console.log("selezionato : ", value)}
+              />
+            ) : null}
           </div>
           <div className={styles.section__content}>
-            {mock.map((card: CardData, index: number) => {
+            {dataToShow.map((card: CardData, index: number) => {
               return (
                 <Card key={index + "HomePageCards" + card.id} data={card} />
               );
@@ -58,4 +94,22 @@ export default function Home() {
       </main>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  let data;
+  await fetch("http://localhost:3001/api/allDepartues", {
+    method: "POST",
+    body: "getAllData",
+  }).then(async (res) => {
+    const alldata = await res.json();
+    // console.log(alldata);
+    data = alldata;
+  });
+  return {
+    props: {
+      data,
+      departurePorts: ["Palermo", "Venezia"],
+    },
+  };
 }

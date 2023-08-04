@@ -19,18 +19,10 @@ const DropdownList = ({ name, values, callback }: ComponentProps) => {
   // VARIABLES ----------------------
   // CONDITIONS ---------------------
   // FUNCTIONS ----------------------
-  const handleOnChange = (e: string) => {
-    console.log(e);
-    callback(e);
-  };
   // VARIABLES ----------------------
   return (
     <div className={styles.DropdownList}>
-      <select
-        onChange={(e) => handleOnChange(e.target.value)}
-        name={name}
-        id={name}
-      >
+      <select onChange={(e) => callback(e.target.value)} name={name} id={name}>
         <option value="All">{name}</option>
         {values.map((list: string, index: number) => {
           return (
