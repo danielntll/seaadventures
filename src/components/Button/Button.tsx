@@ -4,7 +4,7 @@ import { IoChevronForward } from "react-icons/io5";
 
 /**
  *
- * @param {*} width string - "full" | "half" | "auto" (default -> "auto")
+ * @param {*} width string - "full" | "half" | "quarter" | "auto" (default -> "auto")
  * @param {*} size "xl" | "lg" | "md" | "sm" | "xs" - (default -> "sm")
  * @param {*} text string - (default -> "")
  * @param {*} shape "round" | "default" | "light" | "square" - (default -> "default")
@@ -18,7 +18,7 @@ import { IoChevronForward } from "react-icons/io5";
  */
 
 type ComponentProps = {
-  width?: "full" | "half" | "auto";
+  width?: "full" | "half" | "quarter" | "auto";
   size?: "xl" | "lg" | "md" | "sm" | "xs";
   text?: string;
   shape?: "round" | "default" | "light" | "square";

@@ -7,17 +7,24 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import DropdownList from "@/components/DropdownList";
 import { useState, useEffect } from "react";
+import Button from "@/components/Button";
+import { IoChevronDownCircleOutline } from "react-icons/io5";
+import ContentHome from "@/components/ContentHome";
+import ContentHomeFiltred from "@/components/ContentHomeFiltred";
+import { typeDataSorted } from "@/utils/types/typeDataSorted";
 
 type PageProps = {
   data: {
     data: CardData[];
   };
-  departurePorts: string[];
+  allDeparturePorts: string[];
+  sortedData: typeDataSorted[];
 };
 
 export default function Home(props: PageProps) {
   // VARIABLES ----------------------
   const stepData = 8;
+  console.log(props.sortedData);
   // CONDITIONS ---------------------
   const [isFilterActive, setIsFilterActive] = useState(false);
   const [dataToShow, setDataToShow] = useState<CardData[]>([]);
@@ -32,10 +39,17 @@ export default function Home(props: PageProps) {
   const handleSpecificFilter = (valueFilter: string) => {};
 
   const handleAddMoreContent = () => {
-    const auxArray: CardData[] = [];
+    const auxArray: CardData[] = [...dataToShow];
+    let localStep: number;
+    if (props.data.data.length - dataToShow.length < stepData) {
+      localStep = props.data.data.length - dataToShow.length;
+    } else {
+      localStep = stepData;
+    }
+
     for (
       let index = dataToShow.length;
-      index < stepData + dataToShow.length;
+      index < localStep + dataToShow.length;
       index++
     ) {
       auxArray.push(props.data.data[index]);
@@ -77,18 +91,29 @@ export default function Home(props: PageProps) {
             />
             {isFilterActive ? (
               <DropdownList
-                values={props.departurePorts}
-                name="Seleziona porto"
+                values={props.allDeparturePorts}
+                name="Tutti i porti"
                 callback={(value) => console.log("selezionato : ", value)}
               />
             ) : null}
           </div>
           <div className={styles.section__content}>
-            {dataToShow.map((card: CardData, index: number) => {
-              return (
-                <Card key={index + "HomePageCards" + card.id} data={card} />
-              );
-            })}
+            {isFilterActive ? (
+              <ContentHomeFiltred data={props.sortedData} />
+            ) : (
+              <ContentHome dataToShow={dataToShow} />
+            )}
+          </div>
+          <div className={styles.section__cta}>
+            {!isFilterActive && props.data.data.length !== dataToShow.length ? (
+              <Button
+                width="auto"
+                text="MOSTRA ALTRI"
+                direction="right"
+                onClick={() => handleAddMoreContent()}
+                icon={(size) => <IoChevronDownCircleOutline size={size} />}
+              />
+            ) : null}
           </div>
         </section>
       </main>
@@ -98,18 +123,23 @@ export default function Home(props: PageProps) {
 
 export async function getServerSideProps() {
   let data;
+  let allDeparturePorts;
+  let sortedData;
   await fetch("http://localhost:3001/api/allDepartues", {
     method: "POST",
     body: "getAllData",
   }).then(async (res) => {
     const alldata = await res.json();
-    // console.log(alldata);
+    console.log(alldata.dataSorted);
     data = alldata;
+    allDeparturePorts = alldata.allDeparturePorts;
+    sortedData = alldata.dataSorted;
   });
   return {
     props: {
       data,
-      departurePorts: ["Palermo", "Venezia"],
+      allDeparturePorts: allDeparturePorts,
+      sortedData: sortedData,
     },
   };
 }

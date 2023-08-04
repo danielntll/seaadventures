@@ -1,9 +1,12 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { CardData } from "@/utils/types/typeCard";
+import { typeDataSorted } from "@/utils/types/typeDataSorted";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
   data: CardData[];
+  allDeparturePorts: string[];
+  dataSorted: typeDataSorted[];
 };
 
 export default function handler(
@@ -11,8 +14,29 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   const dataReq = req.body;
-  console.log("dataReq: ", dataReq);
-  res.status(200).json({ data: mock });
+  let allDeparturePorts: string[] = [mock[0].departure.Port];
+  let dataSorted: typeDataSorted[] = [
+    {
+      departure: mock[0].departure.Port,
+      data: [mock[0]],
+    },
+  ];
+
+  mock.forEach((data: CardData) => {
+    if (allDeparturePorts.includes(data.departure.Port)) {
+      dataSorted.map((aux: typeDataSorted, index: number) => {
+        aux.departure === data.departure.Port ? aux.data.push(data) : null;
+      });
+    } else {
+      allDeparturePorts.push(data.departure.Port);
+      dataSorted.push({
+        departure: data.departure.Port,
+        data: [data],
+      });
+    }
+  });
+
+  res.status(200).json({ data: mock, allDeparturePorts, dataSorted });
 }
 
 export const mock = [

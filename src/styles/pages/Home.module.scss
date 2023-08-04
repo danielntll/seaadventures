@@ -11,7 +11,13 @@
   }
   .section__content {
     padding: $padding-homepage-section-phone;
-    display: grid;
+  }
+  .section__cta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: $padding-homepage-section-phone;
   }
 }
 
@@ -26,8 +32,10 @@
     .section__content {
       padding: $padding-homepage-section-phone;
       gap: 16px;
-      display: grid;
-      grid-template-columns: auto;
+    }
+    .section__cta {
+      padding: $padding-homepage-section-phone;
+      padding-top: 0;
     }
   }
 }
@@ -42,8 +50,10 @@
     .section__content {
       padding: $padding-homepage-section-phone;
       gap: 16px;
-      display: grid;
-      grid-template-columns: auto;
+    }
+    .section__cta {
+      padding: $padding-homepage-section-phone;
+      padding-top: 0;
     }
   }
 }
@@ -58,8 +68,10 @@
     .section__content {
       padding: $padding-homepage-section-tablet;
       gap: 16px;
-      display: grid;
-      grid-template-columns: auto auto;
+    }
+    .section__cta {
+      padding: $padding-homepage-section-tablet;
+      padding-top: 0;
     }
   }
 }
@@ -74,8 +86,10 @@
     .section__content {
       padding: $padding-homepage-section-laptop;
       gap: 16px;
-      display: grid;
-      grid-template-columns: auto auto auto;
+    }
+    .section__cta {
+      padding: $padding-homepage-section-laptop;
+      padding-top: 0;
     }
   }
 }
@@ -90,8 +104,10 @@
     .section__content {
       padding: $padding-homepage-section-desktop;
       gap: 16px;
-      display: grid;
-      grid-template-columns: auto auto auto auto;
+    }
+    .section__cta {
+      padding: $padding-homepage-section-desktop;
+      padding-top: 0;
     }
   }
 }
